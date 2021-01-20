@@ -1,0 +1,16 @@
+table{
+    width: 60%;
+    margin-left: 350px;
+    margin-top: 150px;
+}
+
+.cell{
+background-color: rgb(157, 209, 127);
+height: 35px;
+width: 35px;
+
+}
+.cell:hover{
+background-color: brown;
+
+}
