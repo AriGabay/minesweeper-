@@ -38,5 +38,7 @@ function level(elButton) {
     gLevel.MINES = 30;
     console.log(gLevel);
   }
-  initGame()
+
+  gBoard = buildBoard();
+  renderBoard(gBoard);
 }

@@ -9,16 +9,19 @@
 </head>
 
 <body onload="initGame()">
-<h1>Welcome</h1>
-<button onclick="level(this)">Esay</button>
-<button onclick="level(this)">Meduim</button>
-<button onclick="level(this)">Hard</button>
-<div class="life"><span>💗</span><span>💗</span><span>💗</span></div>
-<div class="board-container"></div>
+    <h1 class="titel"><span>Welcome to MineSweeper</span></h1>
+    <div class="all-button">
+        <button class="level" onclick="level(this) ">Esay</button>
+        <button class="level" onclick="level(this)">Meduim</button>
+        <button class="level" onclick="level(this)">Hard</button>
+    </div>
+    <div class="life"><span>💗</span><span>💗</span><span>💗</span></div>
+    <div class="board-container"></div>
 
 
 
-<script src="js/utils.js"></script>
-<script src="js/board.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/board.js"></script>
 </body>
+
 </html>
