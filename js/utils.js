@@ -7,7 +7,7 @@ function buildBoard() {
         minesAroundCount: 0,
         isShown: false,
         isMine: false,
-        isMarked: true,
+        isMarked: false,
       };
       board[i][j] = gCell;
     }
@@ -26,19 +26,52 @@ function level(elButton) {
   if (level === 'Esay') {
     gLevel.SIZE = 4;
     gLevel.MINES = 2;
-    console.log(gLevel);
   }
   if (level === 'Meduim') {
     gLevel.SIZE = 8;
     gLevel.MINES = 12;
-    console.log(gLevel);
   }
   if (level === 'Hard') {
     gLevel.SIZE = 12;
     gLevel.MINES = 30;
-    console.log(gLevel);
   }
+  renderLife();
+  initGame();
+}
 
-  gBoard = buildBoard();
-  renderBoard(gBoard);
+function renderLife() {
+  var lifeEl = document.querySelector('.life');
+  var strHTML = `<div class="life"><span>${LIFE}</span><span>${LIFE}</span><span>${LIFE}</span></div>`;
+  lifeEl.innerHTML = strHTML;
+  lifeEl.innerHTML;
+}
+
+function startTimer() {
+  var sec = 0;
+
+  var interVal01 = setInterval(function () {
+    document.querySelector('.seconds').innerHTML = pad(++sec % 60);
+    document.querySelector('.minutes').innerHTML = pad(parseInt(sec / 60, 10));
+  }, 1000);
+  function pad(val) {
+    return val < 9 ? '0' + val : '0' + val;
+  }
+  return interVal01;
+}
+
+function stopTimer(interVal01) {
+  clearInterval(interVal01);
+}
+
+function randomBomb(k, g) {
+  for (var i = 0; i < gLevel.MINES; i++) {
+    var idx1 = getRandomInt(0, gLevel.SIZE);
+    var idx2 = getRandomInt(0, gLevel.SIZE);
+    if (idx1 === k && idx2 === g) {
+      i--;
+      continue;
+    } else {
+      gBoard[idx1][idx2].isMine = true;
+    }
+  }
 }
