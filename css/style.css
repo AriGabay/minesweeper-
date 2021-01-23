@@ -23,6 +23,12 @@ body {
   transition: 0.3s;
   box-shadow: 2px 2px;
 }
+.cell-green {
+  background-color: greenyellow;
+}
+.cell-pink {
+  background-color: pink;
+}
 .titel {
   display: flex;
   justify-content: center;
@@ -37,8 +43,10 @@ body {
 
 .all-button {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 26%;
+  margin: auto;
 }
 .all-button .level {
   border-radius: 8px;
@@ -75,9 +83,93 @@ body {
   align-items: center;
 }
 
-.timer{
+.timer {
   font-family: 'Potta One', cursive;
   display: flex;
   justify-content: center;
-  margin-top: 9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button {
+  margin: auto;
+  width: 26%;
+  display: flex;
+  justify-content: space-between;
+}
+.count-button {
+  margin: auto;
+  width: 26%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.safe-click-count {
+  margin-right: 35px;
+  margin-top: 13px;
+
+}
+
+.safe-click{
+  appearance: button;
+  border-radius: 8px;
+  background-color: antiquewhite;
+  /* -webkit-writing-mode: horizontal-tb !important; */
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+
+
+}
+
+.hint{
+  appearance: button;
+  border-radius: 8px;
+  background-color: antiquewhite;
+  /* -webkit-writing-mode: horizontal-tb !important; */
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 6px;
+  border-width: 2px;
+  border-style: outset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+
+}
+
+.hints{
+  margin-right: 35px;
+  margin-top: 10px
+
+
 }

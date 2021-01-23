@@ -39,22 +39,16 @@ function level(elButton) {
   initGame();
 }
 
-function renderLife() {
-  var lifeEl = document.querySelector('.life');
-  var strHTML = `<div class="life"><span>${LIFE}</span><span>${LIFE}</span><span>${LIFE}</span></div>`;
-  lifeEl.innerHTML = strHTML;
-  lifeEl.innerHTML;
-}
+
 
 function startTimer() {
   var sec = 0;
-
   var interVal01 = setInterval(function () {
     document.querySelector('.seconds').innerHTML = pad(++sec % 60);
     document.querySelector('.minutes').innerHTML = pad(parseInt(sec / 60, 10));
   }, 1000);
   function pad(val) {
-    return val < 9 ? '0' + val : '0' + val;
+    return val < 9 ? '0' + val :val;
   }
   return interVal01;
 }
@@ -74,4 +68,14 @@ function randomBomb(k, g) {
       gBoard[idx1][idx2].isMine = true;
     }
   }
+}
+
+function renderHints() {
+  var strHtml = '';
+  var elHint = document.querySelector('.hints');
+  for (var i = 0; i < gHints; i++) {
+    strHtml += HINT;
+  }
+  elHint.innerText = '';
+  elHint.innerText = strHtml;
 }

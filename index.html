@@ -11,21 +11,31 @@
 <body onload="initGame()">
     <div class="game">
         <h1 class="titel"><span>Welcome to MineSweeper</span></h1>
-        <div class="all-button">
-            <button class="level" onclick="level(this) ">Esay</button>
-            <button class="level" onclick="level(this)">Meduim</button>
-            <button class="level" onclick="level(this)">Hard</button>
-        </div>
-        <div class="timer">
-            <label class="minutes">00</label>
-            <label class="colon">:</label>
-            <label class="seconds">00</label>
-        </div>
-        <div class="top-icons">
-            <div class="life"></div>
-            <div class="smiley" onclick="initGame()"></div>
-        </div>
-        <div class="board-container"></div>
+
+    </div>
+    <div class="all-button">
+        <button class="level" onclick="level(this) ">Esay</button>
+        <button class="level" onclick="level(this)">Meduim</button>
+        <button class="level" onclick="level(this)">Hard</button>
+    </div>
+    <div class="timer">
+        <label class="minutes">00</label>
+        <label class="colon">:</label>
+        <label class="seconds">00</label>
+    </div>
+    <div class="button">
+        <button class="hint" onclick="checkCell()">hints</button>
+        <button class="safe-click" onclick="safeClick()">Safe-Click</button>
+    </div>
+    <div class="count-button">
+        <div class="hints">💡💡💡</div>
+        <div class="safe-click-count">3</div>
+    </div>
+    <div class="top-icons">
+        <div class="life"></div>
+        <div class="smiley" onclick="initGame()"></div>
+    </div>
+    <div class="board-container"></div>
     </div>
     <script src="js/utils.js"></script>
     <script src="js/board.js"></script>
