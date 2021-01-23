@@ -19,14 +19,16 @@ var gLevel = { SIZE: 4, MINES: 2 };
 var gScore;
 
 function initGame() {
-  document.querySelector('.seconds').innerText = '00';
-  document.querySelector('.minutes').innerText = '00';
-  clearInterval(gInterval);
-  gBoard = buildBoard();
-  renderBoard(gBoard);
   gLife = 3;
   gHints = 3;
   gSafeClick = 3;
+  document.querySelector('.seconds').innerText = '00';
+  document.querySelector('.minutes').innerText = '00';
+  document.querySelector('.safe-click-count').innerText = gSafeClick;
+  document.querySelector('.hints').innerText = '💡💡💡';
+  clearInterval(gInterval);
+  gBoard = buildBoard();
+  renderBoard(gBoard);
   renderLife();
   renderSmiley(HAPPY);
   gGame = {
@@ -184,6 +186,22 @@ function expandShown(board, negs, i, j) {
   gBoard[i][j].minesAroundCount = count;
   gBoard[i][j].isShown = true;
 }
+function expandShownForHint(board, negs, i, j) {
+  var count = 0;
+  for (var k = i - 1; k <= i + 1; k++) {
+    if (k < 0 || k > board.length - 1) continue;
+    for (var g = j - 1; g <= j + 1; g++) {
+      if (g < 0 || g > board[0].length - 1) continue;
+      if (k === i && g === j) continue;
+      if (gBoard[k][g].isMine) {
+        count++;
+      }
+    }
+  }
+  negs.minesAroundCount = count;
+  negs.innerText = count;
+  gBoard[i][j].minesAroundCount = count;
+}
 
 function renderSmiley(smiley) {
   var elSmiley = document.querySelector('.smiley');
@@ -227,7 +245,7 @@ function SelectCell(i, j) {
       } else {
         var elNeg = document.querySelector(`.cell-${k}-${g}`);
         console.log('elNeg:', elNeg);
-        expandShown(gBoard, elNeg, k, g);
+        expandShownForHint(gBoard, elNeg, k, g);
         diseableCell(k, g);
       }
     }
@@ -238,7 +256,15 @@ function SelectCell(i, j) {
 
 function diseableCell(k, g) {
   //update modal:
-  gBoard[k][g].isShown = false;
+  console.log('gBoard[k][g]:', gBoard[k][g])
+  if (gBoard[k][g].isShown) {
+    gBoard[k][g].isShown = true;
+    console.log('hi1')
+  }
+  if (gBoard[k][g].isShown === false) {
+    gBoard[k][g].isShown = false;
+    console.log('hi2')
+  }
   gBoard[k][g].isMine = false;
   gBoard[k][g].isMarked = false;
   //update dom:
@@ -249,7 +275,7 @@ function diseableCell(k, g) {
 }
 
 function safeClick() {
-  if (gSafeClick === 0) return document.querySelector('.safe-click-count').innerText=0;
+  if (gSafeClick === 0) return (document.querySelector('.safe-click-count').innerText = 0);
   renderSafeClick();
   gSafeClick--;
   while (!isMark && !isMine && !isShown) {
@@ -285,6 +311,6 @@ function diseableClassCell(k, g) {
 }
 
 function renderSafeClick() {
-  var elSafeClick = (document.querySelector('.safe-click-count').innerText = gSafeClick-1);
+  var elSafeClick = (document.querySelector('.safe-click-count').innerText = gSafeClick - 1);
   console.log('elSafeClick:', elSafeClick);
 }
